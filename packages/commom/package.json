@@ -1,5 +1,5 @@
 {
-  "name": "commom",
+  "name": "@ts-type-check/commom",
   "version": "1.0.1",
   "description": "> TODO: description",
   "author": "Lucas Thimm <thimm@cogio.com.br>",
@@ -15,5 +15,6 @@
   ],
   "scripts": {
     "test": "jest"
-  }
+  },
+  "gitHead": "1694c5fa03beed5901f316f2b845b25637c73a5a"
 }
