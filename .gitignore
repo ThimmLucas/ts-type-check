@@ -1,0 +1,6 @@
+.vscode
+dist
+node_modules
+coverage
+*.log
+packages/**/package-lock.json
