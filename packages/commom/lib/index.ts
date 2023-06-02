@@ -62,6 +62,3 @@ export function isNan(obj: unknown): boolean {
   return !isNumber(obj);
 }
 
-// export function isNumericString(obj: unknown): obj is `${number}` {
-//   return isString(obj) && parseFloat(obj).toString() == obj;
-// }
