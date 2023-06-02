@@ -1,5 +1,5 @@
 {
-  "name": "lerna-typescript-jest-boilerplate",
+  "name": "ts-type-check",
   "description": "Boilerplate template of a monorepo setup using Lerna, TypeScript and Jest",
   "version": "1.0.0",
   "license": "MIT",
