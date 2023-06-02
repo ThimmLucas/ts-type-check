@@ -46,6 +46,22 @@ export function isDate(obj: unknown): obj is Date {
   return isObject(obj) && obj instanceof Date;
 }
 
-export function isEmpty(obj: unknown): obj is [] {
-  return isArray(obj) && !(obj.length > 0)
+export function isDateString(obj: unknown) {
+  return isString(obj) && !isNaN(new Date(obj).getDate());
 }
+
+export function isEmpty(obj: unknown): obj is [] {
+  return isArray(obj) && !(obj.length > 0);
+}
+
+export function isNumericString(obj: unknown): obj is `${number}` {
+  return isString(obj) && parseFloat(obj).toString() == obj;
+}
+
+export function isNan(obj: unknown): boolean {
+  return !isNumber(obj);
+}
+
+// export function isNumericString(obj: unknown): obj is `${number}` {
+//   return isString(obj) && parseFloat(obj).toString() == obj;
+// }

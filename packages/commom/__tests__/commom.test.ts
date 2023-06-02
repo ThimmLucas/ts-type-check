@@ -12,7 +12,10 @@ import {
   isNumber,
   isString,
   isObject,
-  isSymbol
+  isSymbol,
+  isNumericString,
+  isDateString,
+  isNan,
 } from '../lib';
 
 describe('commom', () => {
@@ -65,26 +68,48 @@ describe('commom', () => {
   test('isUndefined', () => {
     expect(isUndefined(null)).toBe(false);
     expect(isUndefined(undefined)).toBe(true);
-  })
+  });
   test('isNumber', () => {
-    expect(isNumber(10)).toBe(true)
-    expect(isNumber('10')).toBe(false)
-    expect(isNumber(new Date())).toBe(false)
-    expect(isNumber(BigInt(10))).toBe(false)
-  })
+    expect(isNumber(10)).toBe(true);
+    expect(isNumber('10')).toBe(false);
+    expect(isNumber(new Date())).toBe(false);
+    expect(isNumber(BigInt(10))).toBe(false);
+  });
   test('isString', () => {
-    expect(isString(isString.name)).toBe(true)
-    expect(isString(parseInt(isString.name))).toBe(false)
-  })
+    expect(isString(isString.name)).toBe(true);
+    expect(isString(parseInt(isString.name))).toBe(false);
+  });
   test('isObject', () => {
-    expect(isObject(isObject)).toBe(false)
-    expect(isObject({a: 1})).toBe(true)
-    expect(isObject(new Date())).toBe(true)
-    expect(isObject(new Array())).toBe(true)
-  })
+    expect(isObject(isObject)).toBe(false);
+    expect(isObject({ a: 1 })).toBe(true);
+    expect(isObject(new Date())).toBe(true);
+    expect(isObject(new Array())).toBe(true);
+  });
   test('isSymbol', () => {
-    expect(isSymbol(isSymbol)).toBe(false)
-    expect(isSymbol("asd")).toBe(false)
-    expect(isSymbol(Symbol("asd"))).toBe(true)
-  })
+    expect(isSymbol(isSymbol)).toBe(false);
+    expect(isSymbol('asd')).toBe(false);
+    expect(isSymbol(Symbol('asd'))).toBe(true);
+  });
+  test('isNumericString', () => {
+    expect(isNumericString('123')).toBe(true);
+    expect(isNumericString(123)).toBe(false);
+    expect(isNumericString(null)).toBe(false);
+    expect(isNumericString(undefined)).toBe(false);
+  });
+  test('isNumericString', () => {
+    expect(isNan('123')).toBe(true);
+    expect(isNan(123)).toBe(false);
+    expect(isNan(null)).toBe(true);
+    expect(isNan(undefined)).toBe(true);
+  });
+  test('isDateString', () => {
+    expect(isDateString('123')).toBe(true);
+    expect(isDateString('2000gmt-3')).toBe(true);
+    expect(isDateString('02/06/23')).toBe(true);
+    expect(isDateString('02-06-23')).toBe(true);
+    expect(isDateString('2023-06-02T15:14:17.256Z')).toBe(true);
+    expect(isDateString(123)).toBe(false);
+    expect(isDateString(null)).toBe(false);
+    expect(isDateString(undefined)).toBe(false);
+  });
 });
